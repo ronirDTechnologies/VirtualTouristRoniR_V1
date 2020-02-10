@@ -30,6 +30,7 @@ class TravelLocationsMapViewController: UIViewController,UINavigationControllerD
             }
             print("DATA TEST")
             print("ERROR 3\(error?.localizedDescription)")
+            print("ERROR 4\(error)")
         }
 
         // Do any additional setup after loading the view.

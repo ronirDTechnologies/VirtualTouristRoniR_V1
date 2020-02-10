@@ -11,9 +11,9 @@ import Foundation
 
 struct ErrorResponse: Codable
 {
-    let stat: String
-    let code: String
-    let message: String
+    let stat: String?
+    let code: String?
+    let message: String?
 }
 
 extension ErrorResponse: LocalizedError
