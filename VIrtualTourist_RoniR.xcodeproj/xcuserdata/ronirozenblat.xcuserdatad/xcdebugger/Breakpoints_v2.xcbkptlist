@@ -8,7 +8,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "16E7FE40-C586-4DD4-B677-130EB7E33006"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VIrtualTourist_RoniR/Model/Client/VirtualTouristClient.swift"
@@ -18,13 +18,45 @@
             endingLineNumber = "53"
             landmarkName = "GetPhotosForLatLon(latVal:lonVal:completion:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "16E7FE40-C586-4DD4-B677-130EB7E33006 - 81adb4b8384aa9e8"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;VIrtualTourist_RoniR.Photos&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in static VIrtualTourist_RoniR.VirtualTouristClient.GetPhotosForLatLon(latVal: Swift.Float, lonVal: Swift.Float, completion: (Swift.Optional&lt;Swift.Array&lt;VIrtualTourist_RoniR.Photo&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "VIrtualTourist_RoniR"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Extreme%20SSD/Developer/UDacity/Projects/VirtualTouristRoniR_V1/VIrtualTourist_RoniR/Model/Client/VirtualTouristClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "884">
+               </Location>
+               <Location
+                  uuid = "16E7FE40-C586-4DD4-B677-130EB7E33006 - 5e5ad6b1dc307440"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 (Swift.Optional&lt;VIrtualTourist_RoniR.Photos&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in static VIrtualTourist_RoniR.VirtualTouristClient.GetPhotosForLatLon(latVal: Swift.Float, lonVal: Swift.Float, completion: (Swift.Optional&lt;Swift.Array&lt;VIrtualTourist_RoniR.Photo&gt;&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "VIrtualTourist_RoniR"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Extreme%20SSD/Developer/UDacity/Projects/VirtualTouristRoniR_V1/VIrtualTourist_RoniR/Model/Client/VirtualTouristClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "41">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "762561CD-9EBF-4048-B1FD-D9CC1621338D"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VIrtualTourist_RoniR/Controller/TravelLocationsMapViewController.swift"
@@ -120,7 +152,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "B2F5D813-6340-4D88-8CE3-742B9676AC76"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VIrtualTourist_RoniR/Model/Client/VirtualTouristClient.swift"
@@ -136,7 +168,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "2809828D-1EC8-4FBD-B395-7F8595F2E0CC"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VIrtualTourist_RoniR/Model/Client/VirtualTouristClient.swift"
@@ -152,7 +184,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "3648F106-3315-4872-8C89-04334A8BE678"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "VIrtualTourist_RoniR/Model/Client/VirtualTouristClient.swift"
@@ -176,6 +208,54 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "49"
             endingLineNumber = "49"
+            landmarkName = "GetPhotosForLatLon(latVal:lonVal:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9BD4DDC6-3712-4389-B6C9-5B837E35F9E8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VIrtualTourist_RoniR/Controller/TravelLocationsMapViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "11324A43-2250-4018-91AC-1494F0F418E0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VIrtualTourist_RoniR/Model/Client/VirtualTouristClient.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "taskForGETRequest(url:responseType:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FEC67E72-A2C8-42B1-9AAB-C8883A04B986"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VIrtualTourist_RoniR/Model/Client/VirtualTouristClient.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "GetPhotosForLatLon(latVal:lonVal:completion:)"
             landmarkType = "7">
          </BreakpointContent>

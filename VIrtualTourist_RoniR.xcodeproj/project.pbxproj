@@ -65,8 +65,6 @@
 			children = (
 				BB44CF5823E13AF1008B20ED /* ErrorResponse.swift */,
 				BBF780E223E286420082502C /* PhotosResponse.swift */,
-				BB944B8423EDCDE200DA07B2 /* Photos.swift */,
-				BB944B8623EDCE5300DA07B2 /* Photo.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -74,6 +72,8 @@
 		BB3ADC2B23E0BC50006AE7DB /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				BB944B8423EDCDE200DA07B2 /* Photos.swift */,
+				BB944B8623EDCE5300DA07B2 /* Photo.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
