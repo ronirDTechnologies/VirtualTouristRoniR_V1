@@ -1,5 +1,5 @@
 //
-//  Photo.swift
+//  Photos.swift
 //  VIrtualTourist_RoniR
 //
 //  Created by Roni Rozenblat on 2/7/20.
@@ -7,9 +7,8 @@
 //
 
 import Foundation
-struct Photo: Codable {
-    let id: String
-    let url_t: String
 
+struct Photos: Codable {
+    let photo: [Photo]
     
 }
