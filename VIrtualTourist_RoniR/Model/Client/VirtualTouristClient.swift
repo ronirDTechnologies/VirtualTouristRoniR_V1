@@ -17,7 +17,7 @@ class VirtualTouristClient
         static let apiKey = "9c9b65a976aaedfa68740bb7830d9464"
         static let base = "https://www.flickr.com/services/rest/"
         
-        case getPhotosForLocation(method:String,lon:String,lat:String,extras:String, formatFlag:String)
+        case getPhotosForLocation(String,String,String,String,String)
         /*
             case getSessionId
             case postStudentLocation
@@ -39,12 +39,13 @@ class VirtualTouristClient
             return URL(string: stringValue)!
         }
     }
+    
     // TODO: LOOK INTO Camel Case of Class Names 02-05-2020
     class func GetPhotosForLatLon(latVal: Float, lonVal: Float, completion:@escaping ([Photo]?, Error?) -> Void)
     {
         
         //let method, let apiKeyVal, let lon, let lat,let extras, let formatFlag
-        taskForGETRequest(url: Endpoints.getPhotosForLocation(method: "flickr.photos.search", lon: "40",lat: "40",extras: "url_t", formatFlag: "json").url, responseType: Photos.self){
+        taskForGETRequest(url: Endpoints.getPhotosForLocation( "flickr.photos.search", "40","40","url_t","json").url, responseType: Photos.self){
             (response,error) in
             if let response = response
             {
@@ -63,6 +64,7 @@ class VirtualTouristClient
             
         }
     }
+    
     @discardableResult class func taskForGETRequest<ResponseType: Decodable>(url:URL, responseType: ResponseType.Type,completion: @escaping(ResponseType?,Error?)->Void) -> URLSessionTask
     {
         
