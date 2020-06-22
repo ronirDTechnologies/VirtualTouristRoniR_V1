@@ -24,14 +24,7 @@ class TravelLocationsMapViewController: UIViewController,UINavigationControllerD
         // Added UIGestureRecognizer to MapView.
         touristMap.addGestureRecognizer(userLongPress)
         
-        VirtualTouristClient.GetPhotosForLatLon(latVal: 40, lonVal: 40){(data,error) in
-            guard let data = data else{
-                return
-            }
-            print("DATA TEST")
-            print("ERROR 3\(error?.localizedDescription)")
-            print("ERROR 4\(error)")
-        }
+
 
         // Do any additional setup after loading the view.
     }
@@ -63,7 +56,15 @@ class TravelLocationsMapViewController: UIViewController,UINavigationControllerD
     // If a pin is tapped, then go to the PhotoAlbumView
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         print("DID SELECT PIN")
-        let photoAlbumVC = storyboard!.instantiateViewController(withIdentifier: "PhotoAlbVC")  as! PhotoAlbumViewController
+        let photoAlbumVC = storyboard!.instantiateViewController(withIdentifier: "PhotoAlbumVController")  as! PhotoAlMapViewController
+        
+        let latStr = String((view.annotation?.coordinate.latitude.description)!)
+        let lonStr = String((view.annotation?.coordinate.longitude.description)!)
+        
+
+        //photoAlbumVC.self.loadPicsForLatLon(pinLatVal: latStr, pinLonVal: lonStr)
+        photoAlbumVC.self.latVal = latStr
+        photoAlbumVC.self.lonVal = lonStr
         
         // Set the back button item of photo album view controller to "OK"
         let backItem = UIBarButtonItem()
@@ -94,14 +95,16 @@ class TravelLocationsMapViewController: UIViewController,UINavigationControllerD
         
         return pinView
     }
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        let detailVC = segue.destination as! PhotoAlbumViewController
+        detailVC.loadPicsForLatLon(pinLatVal: "40", pinLonVal: "40")
     }
-    */
+    
 
 }
