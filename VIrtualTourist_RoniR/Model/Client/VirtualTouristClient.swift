@@ -18,12 +18,6 @@ class VirtualTouristClient
         static let base = "https://www.flickr.com/services/rest/"
         
         case getPhotosForLocation(String,String,String,String,String)
-        /*
-            case getSessionId
-            case postStudentLocation
-            case getStudentLocationMax(String)
-            case getPublicUserData(String)
-        */
         
         
         var stringValue: String
@@ -41,24 +35,24 @@ class VirtualTouristClient
     }
     
     // TODO: LOOK INTO Camel Case of Class Names 02-05-2020
-    class func GetPhotosForLatLon(latVal: Float, lonVal: Float, completion:@escaping ([Photo]?, Error?) -> Void)
+    class func GetPhotosForLatLon(latVal: String, lonVal: String, completion:@escaping (Photos?, Error?) -> Void)
     {
         
         //let method, let apiKeyVal, let lon, let lat,let extras, let formatFlag
-        taskForGETRequest(url: Endpoints.getPhotosForLocation( "flickr.photos.search", "40","40","url_t","json").url, responseType: Photos.self){
+        taskForGETRequest(url: Endpoints.getPhotosForLocation( "flickr.photos.search", lonVal,latVal,"url_t","json").url, responseType: PhotoResponse.self){
             (response,error) in
             if let response = response
             {
                 DispatchQueue.main.async
                 {
-                        completion(response.photo, nil)
+                    completion(response.photos, nil)
                 }
             }
             else
             {
                 DispatchQueue.main.async
                 {
-                    completion([], error)
+                    completion(response?.photos, error)
                 }
             }
             
@@ -80,10 +74,7 @@ class VirtualTouristClient
         
         let decoder = JSONDecoder()
             do
-            {   //let totalCnt = data.count - 1
-                //let range = 14 ..< (totalCnt)
-                //let newData = data.subdata(in: range)
-                //data = newData
+            {
                 
                 let responseObject = try decoder.decode(ResponseType.self, from: data)
                 DispatchQueue.main.async
@@ -94,9 +85,7 @@ class VirtualTouristClient
             }
             catch
             {
-                do
-                {
-                    
+                do{
                     let errorResponse = try decoder.decode(ErrorResponse.self, from: data)
                     DispatchQueue.main.async
                     {
@@ -109,10 +98,9 @@ class VirtualTouristClient
                     DispatchQueue.main.async
                     {
                         completion(nil, error)
-                        print(("ERROR \(error)"))
                     }
-                    
                 }
+                
                 
             }
         }
