@@ -8,11 +8,14 @@
 
 import UIKit
 import MapKit
+import CoreData
 
 class TravelLocationsMapViewController: UIViewController,UINavigationControllerDelegate,MKMapViewDelegate {
 
     @IBOutlet weak var touristMap: MKMapView!
     
+    var dataController: DataController!
+    var pinLocations = [Pin]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +30,12 @@ class TravelLocationsMapViewController: UIViewController,UINavigationControllerD
 
 
         // Do any additional setup after loading the view.
+        
+        let fetchRequest: NSFetchRequest<Pin> = Pin.fetchRequest()
+        
+        if let result = try? dataController.viewContext.fetch(fetchRequest){
+            pinLocations = result
+        }
     }
     
     // A method called when long press is detected.
@@ -51,6 +60,10 @@ class TravelLocationsMapViewController: UIViewController,UINavigationControllerD
         // Added pins to MapView.
         
         touristMap.addAnnotation(myPin)
+        
+        /* TODO: 06-30-2020
+         * 1. Perist the pin in COREDATA
+         */
     }
     
     // If a pin is tapped, then go to the PhotoAlbumView
@@ -99,12 +112,12 @@ class TravelLocationsMapViewController: UIViewController,UINavigationControllerD
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+   /* override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         let detailVC = segue.destination as! PhotoAlbumViewController
         detailVC.loadPicsForLatLon(pinLatVal: "40", pinLonVal: "40")
-    }
+    }*/
     
 
 }

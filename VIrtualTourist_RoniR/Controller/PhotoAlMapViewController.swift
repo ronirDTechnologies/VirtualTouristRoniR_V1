@@ -15,6 +15,7 @@ class PhotoAlMapViewController: UIViewController, UICollectionViewDelegate, UICo
 {
     @IBOutlet weak var MapSelectedLocationMKView: MKMapView!
     
+    
     @IBOutlet weak var PhotoCollectionView: UICollectionView!
     @IBOutlet weak var NoPhotoLabel: UILabel!
     var pinPhotoInfo: [Photo] = []
@@ -73,10 +74,20 @@ func loadPicsForLatLon(pinLatVal: String, pinLonVal: String)
       
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! locationPicCell
-                 
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! locationPicCell
+        
+        let activityView = UIActivityIndicatorView(style: .medium)
+        
+
+        //cell.cellImageVal.addSubview(fadeView)
+
+        cell.addSubview(activityView)
+        activityView.hidesWhenStopped = true
+        activityView.frame = cell.bounds
+        //activityView.center = cell.view.center
+        
         guard let url = URL(string: self.pinPhotoInfo[indexPath.row].urlT) else { return cell }
-                 
+        activityView.startAnimating()
         //cell.cellImage.image = nil // set(image: nil)
                  
         DispatchQueue.global().async
@@ -85,11 +96,13 @@ func loadPicsForLatLon(pinLatVal: String, pinLonVal: String)
                      
             if let data = data, let image = UIImage(data: data)
             {
+                
                 DispatchQueue.main.async
                 {
+                    
                     //cell.cellImage.image = image
                     cell.cellImageVal.image = image
-                             
+                    activityView.stopAnimating()
                 }
             }
         }
