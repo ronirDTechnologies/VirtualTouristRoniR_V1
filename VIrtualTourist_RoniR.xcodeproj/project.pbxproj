@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB04139424AC39B300445D92 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB04139324AC39B300445D92 /* DataController.swift */; };
 		BB346D3A24A050AC00182811 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB346D3824A050AC00182811 /* Photos.swift */; };
 		BB346D3B24A050AC00182811 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB346D3924A050AC00182811 /* Photo.swift */; };
 		BB44CF5923E13AF1008B20ED /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB44CF5823E13AF1008B20ED /* ErrorResponse.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BB04139324AC39B300445D92 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		BB346D3824A050AC00182811 /* Photos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
 		BB346D3924A050AC00182811 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		BB44CF5823E13AF1008B20ED /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				BB7F27F42495D36900D16DDC /* VIrtualTourist_RoniR.xcdatamodeld */,
+				BB04139324AC39B300445D92 /* DataController.swift */,
 				BB3ADC2B23E0BC50006AE7DB /* Data */,
 				BB3ADC2A23E0BC49006AE7DB /* Responses */,
 				BB3ADC2923E0BC33006AE7DB /* Requests */,
@@ -245,6 +248,7 @@
 				BBF780E323E286420082502C /* PhotosResponse.swift in Sources */,
 				BB346D3A24A050AC00182811 /* Photos.swift in Sources */,
 				BBF9A61523C8FE0800C1718D /* AppDelegate.swift in Sources */,
+				BB04139424AC39B300445D92 /* DataController.swift in Sources */,
 				BBF9A61723C8FE0800C1718D /* SceneDelegate.swift in Sources */,
 				BBF9A63223C9005B00C1718D /* PhotoAlbumViewController.swift in Sources */,
 				BB5960D22405BBBA00F6E8E8 /* locationPicCell.swift in Sources */,
