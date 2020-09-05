@@ -87,6 +87,7 @@ func loadPicsForLatLon(pinLatVal: String, pinLonVal: String)
         //activityView.center = cell.view.center
         
         guard let url = URL(string: self.pinPhotoInfo[indexPath.row].urlT) else { return cell }
+        
         activityView.startAnimating()
         //cell.cellImage.image = nil // set(image: nil)
                  
