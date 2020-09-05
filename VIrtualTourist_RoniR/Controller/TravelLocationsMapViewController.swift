@@ -16,6 +16,7 @@ class TravelLocationsMapViewController: UIViewController,UINavigationControllerD
     
     var dataController: DataController!
     var pinLocations = [Pin]()
+    var pinMkAnnotations = [MKAnnotation]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,11 +34,26 @@ class TravelLocationsMapViewController: UIViewController,UINavigationControllerD
         
         let fetchRequest: NSFetchRequest<Pin> = Pin.fetchRequest()
         
-        if let result = try? dataController.viewContext.fetch(fetchRequest){
-            pinLocations = result
+       if let result = try? dataController.viewContext.fetch(fetchRequest){
+         pinLocations = result
         }
+        
+        touristMap.addAnnotations(CreateAnnotations(savedPins: pinLocations))
     }
     
+    // Take stored pin information and convert it to MKPointAnnotation
+    func CreateAnnotations(savedPins:[Pin]) -> [MKAnnotation] {
+        for pin in savedPins {
+            let myCoordinate = CLLocationCoordinate2DMake(pin.lat, pin.lon)
+            // Generate pins.
+            let myPin: MKPointAnnotation = MKPointAnnotation()
+                    
+            // Set the coordinates.
+            myPin.coordinate = myCoordinate
+            pinMkAnnotations.append(myPin)
+        }
+        return pinMkAnnotations
+    }
     // A method called when long press is detected.
     @objc private func detectLongUserPress(_ sender: UILongPressGestureRecognizer) {
         // Do not generate pins many times during long press.
@@ -64,6 +80,14 @@ class TravelLocationsMapViewController: UIViewController,UINavigationControllerD
         /* TODO: 06-30-2020
          * 1. Perist the pin in COREDATA
          */
+        
+
+        
+        let pin = Pin(context: dataController.viewContext)
+        pin.lat = myPin.coordinate.latitude
+        pin.lon = myPin.coordinate.longitude
+        try? dataController.viewContext.save()
+        pinLocations.insert(pin, at: 0)
     }
     
     // If a pin is tapped, then go to the PhotoAlbumView
