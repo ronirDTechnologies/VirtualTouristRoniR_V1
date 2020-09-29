@@ -38,11 +38,11 @@ class TravelLocationsMapViewController: UIViewController,UINavigationControllerD
          pinLocations = result
         }
         
-        touristMap.addAnnotations(CreateAnnotations(savedPins: pinLocations))
+        touristMap.addAnnotations(createAnnotations(savedPins: pinLocations))
     }
     
     // Take stored pin information and convert it to MKPointAnnotation
-    func CreateAnnotations(savedPins:[Pin]) -> [MKAnnotation] {
+    func createAnnotations(savedPins:[Pin]) -> [MKAnnotation] {
         for pin in savedPins {
             let myCoordinate = CLLocationCoordinate2DMake(pin.lat, pin.lon)
             // Generate pins.
@@ -77,9 +77,7 @@ class TravelLocationsMapViewController: UIViewController,UINavigationControllerD
         
         touristMap.addAnnotation(myPin)
         
-        /* TODO: 06-30-2020
-         * 1. Perist the pin in COREDATA
-         */
+       
         
 
         
@@ -93,15 +91,21 @@ class TravelLocationsMapViewController: UIViewController,UINavigationControllerD
     // If a pin is tapped, then go to the PhotoAlbumView
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         print("DID SELECT PIN")
+        
         let photoAlbumVC = storyboard!.instantiateViewController(withIdentifier: "PhotoAlbumVController")  as! PhotoAlMapViewController
         
         let latStr = String((view.annotation?.coordinate.latitude.description)!)
         let lonStr = String((view.annotation?.coordinate.longitude.description)!)
         
+        let selectedPin = Pin(context: dataController.viewContext)
+        selectedPin.lat = view.annotation!.coordinate.latitude
+        selectedPin.lon = view.annotation!.coordinate.longitude
 
         //photoAlbumVC.self.loadPicsForLatLon(pinLatVal: latStr, pinLonVal: lonStr)
         photoAlbumVC.self.latVal = latStr
         photoAlbumVC.self.lonVal = lonStr
+        photoAlbumVC.self.pin = selectedPin
+        photoAlbumVC.self.dataController = dataController
         
         // Set the back button item of photo album view controller to "OK"
         let backItem = UIBarButtonItem()

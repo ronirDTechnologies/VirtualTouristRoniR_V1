@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Gh8-3y-brA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Gh8-3y-brA">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -77,7 +77,7 @@
                                 </connections>
                             </mapView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1cE-XO-bA3">
-                                <rect key="frame" x="8" y="239" width="398" height="633"/>
+                                <rect key="frame" x="7" y="239" width="400" height="573"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ayS-Df-eHr">
                                     <size key="itemSize" width="50" height="50"/>
@@ -86,7 +86,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <label key="backgroundView" hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pin has no photos in location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Wuo-KM-nze">
-                                    <rect key="frame" x="0.0" y="0.0" width="398" height="633"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="573"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
@@ -116,18 +116,25 @@
                                     <outlet property="delegate" destination="ElU-4S-fGj" id="63j-cD-kJ9"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gxD-Yl-EWr">
+                                <rect key="frame" x="0.0" y="820" width="414" height="42"/>
+                                <color key="backgroundColor" white="0.76527806606194748" alpha="0.28999999999999998" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="New Collection"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="1cE-XO-bA3" firstAttribute="top" secondItem="bsJ-Js-TVI" secondAttribute="bottom" constant="8" id="2lk-7U-fQv"/>
-                            <constraint firstItem="ICZ-WV-1hY" firstAttribute="trailing" secondItem="1cE-XO-bA3" secondAttribute="trailing" constant="8" id="C7i-NY-TPa"/>
-                            <constraint firstItem="bsJ-Js-TVI" firstAttribute="leading" secondItem="ICZ-WV-1hY" secondAttribute="leading" id="J7d-P3-QIj"/>
-                            <constraint firstAttribute="bottom" secondItem="1cE-XO-bA3" secondAttribute="bottom" constant="24" id="Smm-Az-d8n"/>
+                            <constraint firstItem="gxD-Yl-EWr" firstAttribute="bottom" secondItem="ICZ-WV-1hY" secondAttribute="bottom" id="RT1-Wo-i6t"/>
+                            <constraint firstItem="1cE-XO-bA3" firstAttribute="centerX" secondItem="mrO-PV-H4U" secondAttribute="centerX" id="RzT-Nb-neg"/>
+                            <constraint firstAttribute="bottom" secondItem="1cE-XO-bA3" secondAttribute="bottom" constant="84" id="Smm-Az-d8n"/>
+                            <constraint firstItem="gxD-Yl-EWr" firstAttribute="top" secondItem="1cE-XO-bA3" secondAttribute="bottom" constant="8" id="Tma-TH-lxG"/>
+                            <constraint firstItem="gxD-Yl-EWr" firstAttribute="centerX" secondItem="1cE-XO-bA3" secondAttribute="centerX" id="U9H-r1-Irr"/>
+                            <constraint firstItem="1cE-XO-bA3" firstAttribute="centerX" secondItem="bsJ-Js-TVI" secondAttribute="centerX" id="cSC-nQ-52W"/>
                             <constraint firstItem="1cE-XO-bA3" firstAttribute="top" secondItem="bsJ-Js-TVI" secondAttribute="bottom" constant="8" id="chE-jd-Y1L"/>
-                            <constraint firstItem="bsJ-Js-TVI" firstAttribute="trailing" secondItem="ICZ-WV-1hY" secondAttribute="trailing" id="dUA-fx-RGq"/>
-                            <constraint firstItem="bsJ-Js-TVI" firstAttribute="centerX" secondItem="1cE-XO-bA3" secondAttribute="centerX" id="fMh-ES-Wz7"/>
-                            <constraint firstItem="1cE-XO-bA3" firstAttribute="leading" secondItem="ICZ-WV-1hY" secondAttribute="leading" constant="8" id="jfV-YK-89Q"/>
+                            <constraint firstItem="gxD-Yl-EWr" firstAttribute="leading" secondItem="ICZ-WV-1hY" secondAttribute="leading" id="juV-ac-0oh"/>
                             <constraint firstItem="bsJ-Js-TVI" firstAttribute="leading" secondItem="ICZ-WV-1hY" secondAttribute="leading" id="kVp-XS-bmb"/>
+                            <constraint firstItem="1cE-XO-bA3" firstAttribute="leading" secondItem="ICZ-WV-1hY" secondAttribute="leading" constant="7" id="svV-rl-fzK"/>
                             <constraint firstItem="bsJ-Js-TVI" firstAttribute="top" secondItem="ICZ-WV-1hY" secondAttribute="top" id="uoQ-Mc-qEm"/>
                             <constraint firstItem="bsJ-Js-TVI" firstAttribute="top" secondItem="ICZ-WV-1hY" secondAttribute="top" id="yqe-N8-knf"/>
                         </constraints>
@@ -137,6 +144,7 @@
                         <outlet property="MapSelectedLocationMKView" destination="bsJ-Js-TVI" id="Dhi-Wr-cg9"/>
                         <outlet property="NoPhotoLabel" destination="Wuo-KM-nze" id="cXh-Ni-jnp"/>
                         <outlet property="PhotoCollectionView" destination="1cE-XO-bA3" id="K30-SI-SOf"/>
+                        <outlet property="RequestNewCollectionBtn" destination="gxD-Yl-EWr" id="hWT-WY-hsr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="28g-IV-UrT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
