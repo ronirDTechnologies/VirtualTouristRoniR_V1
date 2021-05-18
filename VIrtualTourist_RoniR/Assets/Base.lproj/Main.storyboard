@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Gh8-3y-brA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Gh8-3y-brA">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -39,14 +41,14 @@
                                 </connections>
                             </mapView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="UBf-6k-mTt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="NjO-eb-9wG"/>
                             <constraint firstAttribute="bottom" secondItem="UBf-6k-mTt" secondAttribute="bottom" constant="20" symbolic="YES" id="dcu-9d-Qps"/>
                             <constraint firstItem="UBf-6k-mTt" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="pKK-tJ-87L"/>
                             <constraint firstItem="UBf-6k-mTt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tDu-WB-dU5"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Virtual Tourist" id="IAm-7x-buR">
                         <barButtonItem key="rightBarButtonItem" title="Edit" id="4AW-QB-pui"/>
@@ -78,7 +80,7 @@
                             </mapView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1cE-XO-bA3">
                                 <rect key="frame" x="7" y="239" width="400" height="573"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ayS-Df-eHr">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -116,13 +118,14 @@
                                     <outlet property="delegate" destination="ElU-4S-fGj" id="63j-cD-kJ9"/>
                                 </connections>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gxD-Yl-EWr">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gxD-Yl-EWr">
                                 <rect key="frame" x="0.0" y="820" width="414" height="42"/>
                                 <color key="backgroundColor" white="0.76527806606194748" alpha="0.28999999999999998" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="New Collection"/>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="ICZ-WV-1hY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="1cE-XO-bA3" firstAttribute="top" secondItem="bsJ-Js-TVI" secondAttribute="bottom" constant="8" id="2lk-7U-fQv"/>
                             <constraint firstItem="gxD-Yl-EWr" firstAttribute="bottom" secondItem="ICZ-WV-1hY" secondAttribute="bottom" id="RT1-Wo-i6t"/>
@@ -138,7 +141,6 @@
                             <constraint firstItem="bsJ-Js-TVI" firstAttribute="top" secondItem="ICZ-WV-1hY" secondAttribute="top" id="uoQ-Mc-qEm"/>
                             <constraint firstItem="bsJ-Js-TVI" firstAttribute="top" secondItem="ICZ-WV-1hY" secondAttribute="top" id="yqe-N8-knf"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="ICZ-WV-1hY"/>
                     </view>
                     <connections>
                         <outlet property="MapSelectedLocationMKView" destination="bsJ-Js-TVI" id="Dhi-Wr-cg9"/>
@@ -152,4 +154,9 @@
             <point key="canvasLocation" x="971.01449275362324" y="136.60714285714286"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

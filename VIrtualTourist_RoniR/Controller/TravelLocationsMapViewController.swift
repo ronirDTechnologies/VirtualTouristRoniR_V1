@@ -102,10 +102,10 @@ class TravelLocationsMapViewController: UIViewController,UINavigationControllerD
         selectedPin.lon = view.annotation!.coordinate.longitude
 
         //photoAlbumVC.self.loadPicsForLatLon(pinLatVal: latStr, pinLonVal: lonStr)
-        photoAlbumVC.self.latVal = latStr
-        photoAlbumVC.self.lonVal = lonStr
-        photoAlbumVC.self.pin = selectedPin
-        photoAlbumVC.self.dataController = dataController
+        photoAlbumVC.latVal = latStr
+        photoAlbumVC.lonVal = lonStr
+        photoAlbumVC.pin = selectedPin
+        photoAlbumVC.dataController = dataController
         
         // Set the back button item of photo album view controller to "OK"
         let backItem = UIBarButtonItem()
@@ -140,12 +140,13 @@ class TravelLocationsMapViewController: UIViewController,UINavigationControllerD
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-   /* override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        let detailVC = segue.destination as! PhotoAlbumViewController
-        detailVC.loadPicsForLatLon(pinLatVal: "40", pinLonVal: "40")
-    }*/
+        let detailVC = segue.destination as! PhotoAlMapViewController
+        detailVC.dataController = dataController
+        //detailVC.loadPicsForLatLon(pinLatVal: "40", pinLonVal: "40")
+    }
     
 
 }

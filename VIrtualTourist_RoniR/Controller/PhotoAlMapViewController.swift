@@ -39,9 +39,61 @@ class PhotoAlMapViewController: UIViewController, UICollectionViewDelegate, UICo
     func doPicsExistInDataStoreForPin() -> Bool
     {
         
-        var picsExist = false
+        let fetchRequest: NSFetchRequest<PhotoInfo> = PhotoInfo.fetchRequest()
+        let predicate = NSPredicate(format: "pin == %@", self.pin)
+
+        print("THIS IS THE PASSED IN PIN LAT \(self.pin.lat)")
+        print("THIS IS THE PASSED IN PIN LON \(self.pin.lon)")
+            
         
-        return picsExist
+        fetchRequest.predicate = predicate
+        
+        if let result = try? dataController.viewContext.fetch(fetchRequest)
+        {
+            let coreTotalPhotoCnt = result.count
+            if coreTotalPhotoCnt > 0
+            {
+                return true
+            }
+        
+        }
+        
+        return false
+        
+    }
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        let reuseId = "pin"
+        
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
+        
+        if pinView == nil
+        {
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView!.canShowCallout = true
+            pinView!.pinTintColor = .red
+            pinView?.animatesDrop = true
+        }
+        
+        else
+        {
+            pinView!.annotation = annotation
+        }
+        
+        return pinView
+    }
+    
+    func loadPicsIntoCD(pinPhotoInfoArray:[Photo])
+    {
+        pinPhotoInfoArray.forEach {photoInfoObj in
+        
+            self.pin.photos?.adding(photoInfoObj)
+            
+            let pinCD = Pin(context: dataController.viewContext)
+            pinCD.photos = pin.photos
+        }
+        try? dataController.viewContext.save()
+        
     }
     func loadPicsForLatLon(pinLatVal: String, pinLonVal: String)
     {
@@ -51,46 +103,65 @@ class PhotoAlMapViewController: UIViewController, UICollectionViewDelegate, UICo
         let centerPt = CLLocationCoordinate2D.init(latitude: pinLatValCLLC, longitude: pinLongValCCLC)
         let region = MKCoordinateRegion.init(center: centerPt, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
             
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = centerPt
+        
+        self.MapSelectedLocationMKView.addAnnotation(annotation)
         
         // TODO 09-05-2020: CHECK TO SEE IF EXISTING PIN HAS PHOTOS STORED.  IF NOT THE FETCH PICS
+        if (doPicsExistInDataStoreForPin())
+        {
+           print("PICS EXIST IN CORE DATA")
+        }
+        else
+        {
+            self.MapSelectedLocationMKView.setRegion(region, animated: true)
+            DispatchQueue.global(qos: .userInitiated).async
+            {
+                    VirtualTouristClient.GetPhotosForLatLon(latVal: pinLatVal, lonVal: pinLonVal)
+                    {
+                        (data,error) in guard let data = data else
+                        {
+                            return
+                        }
+                        
+                        if data.photo.count > 0
+                        {
+                            self.totalPhotoCnt = data.photo.count
+                            self.pinPhotoInfo = data.photo
+                            // TODO 12-12-2020 LOAD PICS INTO CORE DATA
+                            self.loadPicsIntoCD(pinPhotoInfoArray: self.pinPhotoInfo)
+                            self.PhotoCollectionView.reloadData()
+                        }
+                        else
+                        {
+                            self.NoPhotoLabel.isHidden = false
+                        }
+                    }
+                        
+                        
+                
+                        print("DATA TEST")
+                        //print("ERROR 3\(error?.localizedDescription)")
+                        //print("ERROR 4\(error)")
+            }
+        }
         
 
                   
-        self.MapSelectedLocationMKView.setRegion(region, animated: true)
-        DispatchQueue.global(qos: .userInitiated).async
-        {
-                VirtualTouristClient.GetPhotosForLatLon(latVal: pinLatVal, lonVal: pinLonVal)
-                {
-                    (data,error) in guard let data = data else
-                    {
-                        return
-                    }
-                    
-                    if data.photo.count > 0
-                    {
-                        self.totalPhotoCnt = data.photo.count
-                        self.pinPhotoInfo = data.photo
-                        self.PhotoCollectionView.reloadData()
-                    }
-                    else
-                    {
-                        self.NoPhotoLabel.isHidden = false
-                    }
-                }
-                    
-                    
-            
-                    print("DATA TEST")
-                    //print("ERROR 3\(error?.localizedDescription)")
-                    //print("ERROR 4\(error)")
-        }
+     
        
     }
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
-        loadPicsForLatLon(pinLatVal: latVal, pinLonVal: lonVal)
+        // TODO: 02-07-2021 Setup Fetch Request
+        
+        self.loadPicsForLatLon(pinLatVal: latVal, pinLonVal: lonVal)
+        
+        
+        
         
         // Do any additional setup after loading the view.
     }
@@ -173,9 +244,9 @@ class PhotoAlMapViewController: UIViewController, UICollectionViewDelegate, UICo
                             activityView.stopAnimating()
                             activityView.isHidden = true
                             cell.cellImageVal.image = cellImageVal
-                             /* imageView.image = image
-                             imageView.contentMode = UIViewContentMode.scaleAspectFit
-                             self.view.addSubview(imageView)*/
+                            
+                            self.addPhoto(imageVal: imageData as Data, imageUrlVal: imageUrl)
+                         
                          }
                      }
                  }
@@ -184,19 +255,32 @@ class PhotoAlMapViewController: UIViewController, UICollectionViewDelegate, UICo
                  return cell
              
       }
+    func addPhoto(imageVal: Data, imageUrlVal:URL)
+    {
+        //TODO: 10-09-2020 Load pic to core Date
+        let photo = PhotoInfo(context: dataController.viewContext)
+        photo.pin = pin
+        photo.image = imageVal as Data
+        photo.url_t = imageUrlVal
+       
+        try? self.dataController.viewContext.save()
+    }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-    }
-    */
+        if let vc = segue.destination as? PhotoAlbumViewController {
+            vc.dataController = dataController
+        }
+    }*/
+    
 
 }

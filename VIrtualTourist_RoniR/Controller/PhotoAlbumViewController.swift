@@ -17,6 +17,7 @@ class PhotoAlbumViewController:  UICollectionViewController
     }()
     @IBOutlet weak var PhotoCollectionView: UICollectionView!
 var pinPhotoInfo: [Photo] = []
+    var dataController:DataController!
     
 func loadPicsForLatLon(pinLatVal: String, pinLonVal: String)
 {

@@ -24,7 +24,7 @@ class VirtualTouristClient
         {
             switch self
             {
-            case .getPhotosForLocation(let method, let lon, let lat,let extras, let formatFlag):     return Endpoints.base + "?method=" + method + "&api_key=" + Endpoints.apiKey + "&lat=" +   lat+"&lon="+lon + "&extras=" + extras + "&format="+formatFlag + "&nojsoncallback=1"
+            case .getPhotosForLocation(let method, let lon, let lat,let extras, let formatFlag):     return Endpoints.base + "?method=" + method + "&api_key=" + Endpoints.apiKey + "&lat=" +   lat+"&lon="+lon + "&extras=" + extras + "&format="+formatFlag + "&nojsoncallback=1&per_page=50"
             }
         }
         
